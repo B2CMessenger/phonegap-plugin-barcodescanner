@@ -55,6 +55,7 @@
 @property (nonatomic, retain) AVCaptureSession*           captureSession;
 @property (nonatomic, retain) AVCaptureVideoPreviewLayer* previewLayer;
 @property (nonatomic, retain) NSString*                   alternateXib;
+@property (nonatomic, retain) NSString*                   cancelButtonText;
 @property (nonatomic, retain) NSMutableArray*             results;
 @property (nonatomic, retain) NSString*                   formats;
 @property (nonatomic)         BOOL                        is1D;
@@ -207,6 +208,12 @@
 
     if (showTorchButton) {
       processor.isShowTorchButton = true;
+    }
+
+    if (nil != options[@"cancelButtonText"]) {
+        processor.cancelButtonText = options[@"cancelButtonText"];
+    } else {
+        processor.cancelButtonText = @"Cancel";
     }
 
     processor.isSuccessBeepEnabled = !disableSuccessBeep;
@@ -873,17 +880,18 @@ parentViewController:(UIViewController*)parentViewController
     self.toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
     id cancelButton = [[UIBarButtonItem alloc]
-                       initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                       initWithTitle:_processor.cancelButtonText
+                       style:UIBarButtonItemStylePlain
                        target:(id)self
                        action:@selector(cancelButtonPressed:)
                        ];
-
 
     id flexSpace = [[UIBarButtonItem alloc]
                     initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                     target:nil
                     action:nil
                     ];
+
 
     id flipCamera = [[UIBarButtonItem alloc]
                        initWithBarButtonSystemItem:UIBarButtonSystemItemCamera
