@@ -48,6 +48,9 @@ public class BarcodeScanner extends CordovaPlugin {
     private static final String SHOW_FLIP_CAMERA_BUTTON = "showFlipCameraButton";
     private static final String RESULTDISPLAY_DURATION = "resultDisplayDuration";
     private static final String SHOW_TORCH_BUTTON = "showTorchButton";
+    private static final String SHOW_CANCEL_BUTTON = "showCancelButton";
+    private static final String CANCEL_BUTTON_TEXT = "cancelButtonText";
+    private static final String DONT_CLOSE_ON_BACK = "dontCloseOnBack";
     private static final String TORCH_ON = "torchOn";
     private static final String SAVE_HISTORY = "saveHistory";
     private static final String DISABLE_BEEP = "disableSuccessBeep";
@@ -182,6 +185,10 @@ public class BarcodeScanner extends CordovaPlugin {
                         intentScan.putExtra(Intents.Scan.SAVE_HISTORY, obj.optBoolean(SAVE_HISTORY, false));
                         boolean beep = obj.optBoolean(DISABLE_BEEP, false);
                         intentScan.putExtra(Intents.Scan.BEEP_ON_SCAN, !beep);
+
+                        intentScan.putExtra(Intents.Scan.SHOW_CANCEL_BUTTON, obj.optBoolean(SHOW_CANCEL_BUTTON, false));
+                        intentScan.putExtra(Intents.Scan.DONT_CLOSE_ON_BACK, obj.optBoolean(DONT_CLOSE_ON_BACK, false));
+
                         if (obj.has(RESULTDISPLAY_DURATION)) {
                             intentScan.putExtra(Intents.Scan.RESULT_DISPLAY_DURATION_MS, "" + obj.optLong(RESULTDISPLAY_DURATION));
                         }
@@ -193,6 +200,10 @@ public class BarcodeScanner extends CordovaPlugin {
                         }
                         if (obj.has(ORIENTATION)) {
                             intentScan.putExtra(Intents.Scan.ORIENTATION_LOCK, obj.optString(ORIENTATION));
+                        }
+
+                        if (obj.has(CANCEL_BUTTON_TEXT)) {
+                            intentScan.putExtra(Intents.Scan.CANCEL_BUTTON_TEXT, obj.optString(CANCEL_BUTTON_TEXT));
                         }
                     }
 
