@@ -1,5 +1,12 @@
 # Change Log
 
+## v8.2.0
+
+- Add capability to display `Cancel` button on Android
+- Add option to disable closing scanner activity via device back button on Android
+- Make text of `Cancel` button be configurable via `cancelButtonText` option  
+- Remove unhandled swipe-to-close gesture on iOS 11+
+
 ## v8.1.0
 
 - Don't use `dispatch_sync` if already in the main thread ([#797](https://github.com/phonegap/phonegap-plugin-barcodescanner/pull/797)) [view commit](https://github.com/phonegap/phonegap-plugin-barcodescanner/commit/d45ffc32c03e489b6bb3da8a29d950e7a89f4812)
