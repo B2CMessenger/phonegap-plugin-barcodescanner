@@ -1,5 +1,9 @@
 # Change Log
 
+## v8.2.1
+
+- Add missing `barcodescanner-release-2.1.7-custom.aar` file to `plugin.xml`
+
 ## v8.2.0
 
 - Add capability to display `Cancel` button on Android
